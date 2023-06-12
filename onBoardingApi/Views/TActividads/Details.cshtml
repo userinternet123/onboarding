@@ -1,0 +1,50 @@
+﻿@model onBoardingApi.Models.TActividad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TActividad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionActividad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionActividad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasEvaluar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasEvaluar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdActividad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

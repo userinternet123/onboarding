@@ -1,0 +1,1292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbOnboardingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TActividad">
+          <Key>
+            <PropertyRef Name="IdActividad" />
+          </Key>
+          <Property Name="IdActividad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreActividad" Type="nvarchar(max)" />
+          <Property Name="DescripcionActividad" Type="nvarchar(max)" />
+          <Property Name="Peso" Type="int" />
+          <Property Name="DiasEvaluar" Type="int" />
+          <Property Name="IdObjetivo" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TArea">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreArea" Type="nvarchar(max)" />
+          <Property Name="DescripcionArea" Type="nvarchar(max)" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TAsignacion">
+          <Key>
+            <PropertyRef Name="IdRecursoPuestoEmpleado" />
+          </Key>
+          <Property Name="IdRecursoPuestoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoAsignacion" Type="bit" />
+          <Property Name="IdRecurso" Type="int" />
+          <Property Name="IdPuesto" Type="int" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TColaborador">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+          </Key>
+          <Property Name="IdColaborador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreColaborador" Type="nvarchar(max)" />
+          <Property Name="ApellidoColaborador" Type="nvarchar(max)" />
+          <Property Name="DPIColaborador" Type="bigint" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="IdPuesto" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TDetalleEvaluacion">
+          <Key>
+            <PropertyRef Name="IdDetalleEvaluacion" />
+          </Key>
+          <Property Name="IdDetalleEvaluacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdActividad" Type="int" />
+          <Property Name="IdPlanOnBoarding" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+          <Property Name="Nota" Type="int" />
+        </EntityType>
+        <EntityType Name="TObjetivo">
+          <Key>
+            <PropertyRef Name="IdObjetivo" />
+          </Key>
+          <Property Name="IdObjetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreObjetivo" Type="nvarchar(max)" />
+          <Property Name="DescripcionObjetivo" Type="nvarchar(max)" />
+          <Property Name="IdTipoObjetivo" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TPlanOnBoarding">
+          <Key>
+            <PropertyRef Name="IdPlanOnBoarding" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTipo" Type="nvarchar(max)" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="IdPuesto" Type="int" />
+          <Property Name="FechaEvaluacion" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="Realizado" Type="bit" />
+          <Property Name="PuntuacionTotal" Type="int" />
+          <Property Name="EscalaTC" Type="int" />
+          <Property Name="Puntuacion" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ResultadoFinal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EscalaWill" Type="int" />
+          <Property Name="EscalaSkill" Type="int" />
+          <Property Name="Cuadrante" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumeroEvaluacion" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TPuesto">
+          <Key>
+            <PropertyRef Name="IdPuesto" />
+          </Key>
+          <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePuesto" Type="nvarchar(max)" />
+          <Property Name="DescripcionPuesto" Type="nvarchar(max)" />
+          <Property Name="IdArea" Type="int" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TRecurso">
+          <Key>
+            <PropertyRef Name="IdRecurso" />
+          </Key>
+          <Property Name="IdRecurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRecurso" Type="nvarchar(max)" />
+          <Property Name="DescripcionRecurso" Type="nvarchar(max)" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TTipoObjetivo">
+          <Key>
+            <PropertyRef Name="IdTipoObjetivo" />
+          </Key>
+          <Property Name="IdTipoObjetivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreTipo" Type="nvarchar(max)" />
+          <Property Name="DescripcionTipo" Type="nvarchar(max)" />
+          <Property Name="UsuarioInserto" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaInserto" Type="datetime" />
+          <Property Name="UsuarioModifico" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaModifico" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbOnboarding.dbo.VCuadranteEmpleado' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VCuadranteEmpleado">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="NombreColaborador" Type="nvarchar(max)" />
+          <Property Name="DPIColaborador" Type="bigint" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="IdPuesto" Type="int" Nullable="false" />
+          <Property Name="NombrePuesto" Type="nvarchar(max)" />
+          <Property Name="IdArea" Type="int" Nullable="false" />
+          <Property Name="NombreArea" Type="nvarchar(max)" />
+          <Property Name="FechaEvaluacion" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="Realizado" Type="bit" />
+          <Property Name="NumeroEvaluacion" Type="int" />
+          <Property Name="PuntuacionTotalSkill" Type="int" />
+          <Property Name="EscalaTecnica" Type="int" />
+          <Property Name="PuntuacionTotalWill" Type="int" />
+          <Property Name="EscalaConductual" Type="int" />
+          <Property Name="ResultadoFinal" Type="int" />
+          <Property Name="Cuadrante" Type="int" />
+          <Property Name="Matriz" Type="varchar" MaxLength="14" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbOnboarding.dbo.VEscalasEmpleadoPlanOB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VEscalasEmpleadoPlanOB">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="NombreColaborador" Type="nvarchar(max)" />
+          <Property Name="DPIColaborador" Type="bigint" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="IdPuesto" Type="int" Nullable="false" />
+          <Property Name="NombrePuesto" Type="nvarchar(max)" />
+          <Property Name="IdArea" Type="int" Nullable="false" />
+          <Property Name="NombreArea" Type="nvarchar(max)" />
+          <Property Name="FechaEvaluacion" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="Realizado" Type="bit" />
+          <Property Name="NumeroEvaluacion" Type="int" />
+          <Property Name="PuntuacionTotalSkill" Type="int" />
+          <Property Name="EscalaTecnica" Type="int" />
+          <Property Name="PuntuacionTotalWill" Type="int" />
+          <Property Name="EscalaConductual" Type="int" />
+          <Property Name="ResultadoFinal" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbOnboarding.dbo.VResultadoColaboradorSkill' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VResultadoColaboradorSkill">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="int" />
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="NombreColaborador" Type="nvarchar(max)" />
+          <Property Name="DPIColaborador" Type="bigint" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="IdPuesto" Type="int" Nullable="false" />
+          <Property Name="NombrePuesto" Type="nvarchar(max)" />
+          <Property Name="IdArea" Type="int" Nullable="false" />
+          <Property Name="NombreArea" Type="nvarchar(max)" />
+          <Property Name="FechaEvaluacion" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="Realizado" Type="bit" />
+          <Property Name="NumeroEvaluacion" Type="int" />
+          <Property Name="PuntuacionTotalSkill" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbOnboarding.dbo.VResultadoColaboradorWill' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VResultadoColaboradorWill">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="int" />
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="NombreColaborador" Type="nvarchar(max)" />
+          <Property Name="DPIColaborador" Type="bigint" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="FechaAlta" Type="datetime" />
+          <Property Name="IdPuesto" Type="int" Nullable="false" />
+          <Property Name="NombrePuesto" Type="nvarchar(max)" />
+          <Property Name="IdArea" Type="int" Nullable="false" />
+          <Property Name="NombreArea" Type="nvarchar(max)" />
+          <Property Name="FechaEvaluacion" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="Realizado" Type="bit" />
+          <Property Name="NumeroEvaluacion" Type="int" />
+          <Property Name="PuntuacionTotalWill" Type="int" />
+        </EntityType>
+        <Association Name="fk_ActividadObjetivo">
+          <End Role="TObjetivo" Type="Self.TObjetivo" Multiplicity="0..1" />
+          <End Role="TActividad" Type="Self.TActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TObjetivo">
+              <PropertyRef Name="IdObjetivo" />
+            </Principal>
+            <Dependent Role="TActividad">
+              <PropertyRef Name="IdObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ColaboradorPuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TColaborador">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EvaluacionActividad">
+          <End Role="TActividad" Type="Self.TActividad" Multiplicity="0..1" />
+          <End Role="TDetalleEvaluacion" Type="Self.TDetalleEvaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TActividad">
+              <PropertyRef Name="IdActividad" />
+            </Principal>
+            <Dependent Role="TDetalleEvaluacion">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EvaluacionPlanOnBoarding">
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="0..1" />
+          <End Role="TDetalleEvaluacion" Type="Self.TDetalleEvaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPlanOnBoarding">
+              <PropertyRef Name="IdPlanOnBoarding" />
+            </Principal>
+            <Dependent Role="TDetalleEvaluacion">
+              <PropertyRef Name="IdPlanOnBoarding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ObjetivoTipoObjetivo">
+          <End Role="TTipoObjetivo" Type="Self.TTipoObjetivo" Multiplicity="0..1" />
+          <End Role="TObjetivo" Type="Self.TObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTipoObjetivo">
+              <PropertyRef Name="IdTipoObjetivo" />
+            </Principal>
+            <Dependent Role="TObjetivo">
+              <PropertyRef Name="IdTipoObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_planOnBoardingColaborador">
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="0..1" />
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="TPlanOnBoarding">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_planOnBoardingPuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TPlanOnBoarding">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PuestoArea">
+          <End Role="TArea" Type="Self.TArea" Multiplicity="0..1" />
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TArea">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="TPuesto">
+              <PropertyRef Name="IdArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpeColaborador">
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpePuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpeRecurso">
+          <End Role="TRecurso" Type="Self.TRecurso" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRecurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbOnboardingModelStoreContainer">
+          <EntitySet Name="TActividad" EntityType="Self.TActividad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TArea" EntityType="Self.TArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAsignacion" EntityType="Self.TAsignacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TColaborador" EntityType="Self.TColaborador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TDetalleEvaluacion" EntityType="Self.TDetalleEvaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TObjetivo" EntityType="Self.TObjetivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPlanOnBoarding" EntityType="Self.TPlanOnBoarding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPuesto" EntityType="Self.TPuesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRecurso" EntityType="Self.TRecurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TTipoObjetivo" EntityType="Self.TTipoObjetivo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VCuadranteEmpleado" EntityType="Self.VCuadranteEmpleado" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VCuadranteEmpleado].[IdColaborador] AS [IdColaborador], 
+    [VCuadranteEmpleado].[NombreColaborador] AS [NombreColaborador], 
+    [VCuadranteEmpleado].[DPIColaborador] AS [DPIColaborador], 
+    [VCuadranteEmpleado].[FechaIngreso] AS [FechaIngreso], 
+    [VCuadranteEmpleado].[FechaAlta] AS [FechaAlta], 
+    [VCuadranteEmpleado].[IdPuesto] AS [IdPuesto], 
+    [VCuadranteEmpleado].[NombrePuesto] AS [NombrePuesto], 
+    [VCuadranteEmpleado].[IdArea] AS [IdArea], 
+    [VCuadranteEmpleado].[NombreArea] AS [NombreArea], 
+    [VCuadranteEmpleado].[FechaEvaluacion] AS [FechaEvaluacion], 
+    [VCuadranteEmpleado].[FechaVencimiento] AS [FechaVencimiento], 
+    [VCuadranteEmpleado].[Realizado] AS [Realizado], 
+    [VCuadranteEmpleado].[NumeroEvaluacion] AS [NumeroEvaluacion], 
+    [VCuadranteEmpleado].[PuntuacionTotalSkill] AS [PuntuacionTotalSkill], 
+    [VCuadranteEmpleado].[EscalaTecnica] AS [EscalaTecnica], 
+    [VCuadranteEmpleado].[PuntuacionTotalWill] AS [PuntuacionTotalWill], 
+    [VCuadranteEmpleado].[EscalaConductual] AS [EscalaConductual], 
+    [VCuadranteEmpleado].[ResultadoFinal] AS [ResultadoFinal], 
+    [VCuadranteEmpleado].[Cuadrante] AS [Cuadrante], 
+    [VCuadranteEmpleado].[Matriz] AS [Matriz]
+    FROM [dbo].[VCuadranteEmpleado] AS [VCuadranteEmpleado]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VEscalasEmpleadoPlanOB" EntityType="Self.VEscalasEmpleadoPlanOB" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VEscalasEmpleadoPlanOB].[IdColaborador] AS [IdColaborador], 
+    [VEscalasEmpleadoPlanOB].[NombreColaborador] AS [NombreColaborador], 
+    [VEscalasEmpleadoPlanOB].[DPIColaborador] AS [DPIColaborador], 
+    [VEscalasEmpleadoPlanOB].[FechaIngreso] AS [FechaIngreso], 
+    [VEscalasEmpleadoPlanOB].[FechaAlta] AS [FechaAlta], 
+    [VEscalasEmpleadoPlanOB].[IdPuesto] AS [IdPuesto], 
+    [VEscalasEmpleadoPlanOB].[NombrePuesto] AS [NombrePuesto], 
+    [VEscalasEmpleadoPlanOB].[IdArea] AS [IdArea], 
+    [VEscalasEmpleadoPlanOB].[NombreArea] AS [NombreArea], 
+    [VEscalasEmpleadoPlanOB].[FechaEvaluacion] AS [FechaEvaluacion], 
+    [VEscalasEmpleadoPlanOB].[FechaVencimiento] AS [FechaVencimiento], 
+    [VEscalasEmpleadoPlanOB].[Realizado] AS [Realizado], 
+    [VEscalasEmpleadoPlanOB].[NumeroEvaluacion] AS [NumeroEvaluacion], 
+    [VEscalasEmpleadoPlanOB].[PuntuacionTotalSkill] AS [PuntuacionTotalSkill], 
+    [VEscalasEmpleadoPlanOB].[EscalaTecnica] AS [EscalaTecnica], 
+    [VEscalasEmpleadoPlanOB].[PuntuacionTotalWill] AS [PuntuacionTotalWill], 
+    [VEscalasEmpleadoPlanOB].[EscalaConductual] AS [EscalaConductual], 
+    [VEscalasEmpleadoPlanOB].[ResultadoFinal] AS [ResultadoFinal]
+    FROM [dbo].[VEscalasEmpleadoPlanOB] AS [VEscalasEmpleadoPlanOB]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VResultadoColaboradorSkill" EntityType="Self.VResultadoColaboradorSkill" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VResultadoColaboradorSkill].[IdPlanOnBoarding] AS [IdPlanOnBoarding], 
+    [VResultadoColaboradorSkill].[IdColaborador] AS [IdColaborador], 
+    [VResultadoColaboradorSkill].[NombreColaborador] AS [NombreColaborador], 
+    [VResultadoColaboradorSkill].[DPIColaborador] AS [DPIColaborador], 
+    [VResultadoColaboradorSkill].[FechaIngreso] AS [FechaIngreso], 
+    [VResultadoColaboradorSkill].[FechaAlta] AS [FechaAlta], 
+    [VResultadoColaboradorSkill].[IdPuesto] AS [IdPuesto], 
+    [VResultadoColaboradorSkill].[NombrePuesto] AS [NombrePuesto], 
+    [VResultadoColaboradorSkill].[IdArea] AS [IdArea], 
+    [VResultadoColaboradorSkill].[NombreArea] AS [NombreArea], 
+    [VResultadoColaboradorSkill].[FechaEvaluacion] AS [FechaEvaluacion], 
+    [VResultadoColaboradorSkill].[FechaVencimiento] AS [FechaVencimiento], 
+    [VResultadoColaboradorSkill].[Realizado] AS [Realizado], 
+    [VResultadoColaboradorSkill].[NumeroEvaluacion] AS [NumeroEvaluacion], 
+    [VResultadoColaboradorSkill].[PuntuacionTotalSkill] AS [PuntuacionTotalSkill]
+    FROM [dbo].[VResultadoColaboradorSkill] AS [VResultadoColaboradorSkill]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VResultadoColaboradorWill" EntityType="Self.VResultadoColaboradorWill" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VResultadoColaboradorWill].[IdPlanOnBoarding] AS [IdPlanOnBoarding], 
+    [VResultadoColaboradorWill].[IdColaborador] AS [IdColaborador], 
+    [VResultadoColaboradorWill].[NombreColaborador] AS [NombreColaborador], 
+    [VResultadoColaboradorWill].[DPIColaborador] AS [DPIColaborador], 
+    [VResultadoColaboradorWill].[FechaIngreso] AS [FechaIngreso], 
+    [VResultadoColaboradorWill].[FechaAlta] AS [FechaAlta], 
+    [VResultadoColaboradorWill].[IdPuesto] AS [IdPuesto], 
+    [VResultadoColaboradorWill].[NombrePuesto] AS [NombrePuesto], 
+    [VResultadoColaboradorWill].[IdArea] AS [IdArea], 
+    [VResultadoColaboradorWill].[NombreArea] AS [NombreArea], 
+    [VResultadoColaboradorWill].[FechaEvaluacion] AS [FechaEvaluacion], 
+    [VResultadoColaboradorWill].[FechaVencimiento] AS [FechaVencimiento], 
+    [VResultadoColaboradorWill].[Realizado] AS [Realizado], 
+    [VResultadoColaboradorWill].[NumeroEvaluacion] AS [NumeroEvaluacion], 
+    [VResultadoColaboradorWill].[PuntuacionTotalWill] AS [PuntuacionTotalWill]
+    FROM [dbo].[VResultadoColaboradorWill] AS [VResultadoColaboradorWill]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_ActividadObjetivo" Association="Self.fk_ActividadObjetivo">
+            <End Role="TObjetivo" EntitySet="TObjetivo" />
+            <End Role="TActividad" EntitySet="TActividad" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ColaboradorPuesto" Association="Self.fk_ColaboradorPuesto">
+            <End Role="TPuesto" EntitySet="TPuesto" />
+            <End Role="TColaborador" EntitySet="TColaborador" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EvaluacionActividad" Association="Self.fk_EvaluacionActividad">
+            <End Role="TActividad" EntitySet="TActividad" />
+            <End Role="TDetalleEvaluacion" EntitySet="TDetalleEvaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EvaluacionPlanOnBoarding" Association="Self.fk_EvaluacionPlanOnBoarding">
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoarding" />
+            <End Role="TDetalleEvaluacion" EntitySet="TDetalleEvaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ObjetivoTipoObjetivo" Association="Self.fk_ObjetivoTipoObjetivo">
+            <End Role="TTipoObjetivo" EntitySet="TTipoObjetivo" />
+            <End Role="TObjetivo" EntitySet="TObjetivo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_planOnBoardingColaborador" Association="Self.fk_planOnBoardingColaborador">
+            <End Role="TColaborador" EntitySet="TColaborador" />
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoarding" />
+          </AssociationSet>
+          <AssociationSet Name="fk_planOnBoardingPuesto" Association="Self.fk_planOnBoardingPuesto">
+            <End Role="TPuesto" EntitySet="TPuesto" />
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoarding" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PuestoArea" Association="Self.fk_PuestoArea">
+            <End Role="TArea" EntitySet="TArea" />
+            <End Role="TPuesto" EntitySet="TPuesto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpeColaborador" Association="Self.fk_rpeColaborador">
+            <End Role="TColaborador" EntitySet="TColaborador" />
+            <End Role="TAsignacion" EntitySet="TAsignacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpePuesto" Association="Self.fk_rpePuesto">
+            <End Role="TPuesto" EntitySet="TPuesto" />
+            <End Role="TAsignacion" EntitySet="TAsignacion" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpeRecurso" Association="Self.fk_rpeRecurso">
+            <End Role="TRecurso" EntitySet="TRecurso" />
+            <End Role="TAsignacion" EntitySet="TAsignacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbOnboardingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TActividad">
+          <Key>
+            <PropertyRef Name="IdActividad" />
+          </Key>
+          <Property Name="IdActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreActividad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionActividad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Peso" Type="Int32" />
+          <Property Name="DiasEvaluar" Type="Int32" />
+          <Property Name="IdObjetivo" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TObjetivo" Relationship="Self.fk_ActividadObjetivo" FromRole="TActividad" ToRole="TObjetivo" />
+          <NavigationProperty Name="TDetalleEvaluacions" Relationship="Self.fk_EvaluacionActividad" FromRole="TActividad" ToRole="TDetalleEvaluacion" />
+        </EntityType>
+        <EntityType Name="TArea">
+          <Key>
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdArea" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TPuestoes" Relationship="Self.fk_PuestoArea" FromRole="TArea" ToRole="TPuesto" />
+        </EntityType>
+        <EntityType Name="TAsignacion">
+          <Key>
+            <PropertyRef Name="IdRecursoPuestoEmpleado" />
+          </Key>
+          <Property Name="IdRecursoPuestoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoAsignacion" Type="Boolean" />
+          <Property Name="IdRecurso" Type="Int32" />
+          <Property Name="IdPuesto" Type="Int32" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TColaborador" Relationship="Self.fk_rpeColaborador" FromRole="TAsignacion" ToRole="TColaborador" />
+          <NavigationProperty Name="TPuesto" Relationship="Self.fk_rpePuesto" FromRole="TAsignacion" ToRole="TPuesto" />
+          <NavigationProperty Name="TRecurso" Relationship="Self.fk_rpeRecurso" FromRole="TAsignacion" ToRole="TRecurso" />
+        </EntityType>
+        <EntityType Name="TColaborador">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+          </Key>
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DPIColaborador" Type="Int64" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="IdPuesto" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TAsignacions" Relationship="Self.fk_rpeColaborador" FromRole="TColaborador" ToRole="TAsignacion" />
+          <NavigationProperty Name="TPuesto" Relationship="Self.fk_ColaboradorPuesto" FromRole="TColaborador" ToRole="TPuesto" />
+          <NavigationProperty Name="TPlanOnBoardings" Relationship="Self.fk_planOnBoardingColaborador" FromRole="TColaborador" ToRole="TPlanOnBoarding" />
+        </EntityType>
+        <EntityType Name="TDetalleEvaluacion">
+          <Key>
+            <PropertyRef Name="IdDetalleEvaluacion" />
+          </Key>
+          <Property Name="IdDetalleEvaluacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdActividad" Type="Int32" />
+          <Property Name="IdPlanOnBoarding" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <Property Name="Nota" Type="Int32" />
+          <NavigationProperty Name="TActividad" Relationship="Self.fk_EvaluacionActividad" FromRole="TDetalleEvaluacion" ToRole="TActividad" />
+          <NavigationProperty Name="TPlanOnBoarding" Relationship="Self.fk_EvaluacionPlanOnBoarding" FromRole="TDetalleEvaluacion" ToRole="TPlanOnBoarding" />
+        </EntityType>
+        <EntityType Name="TObjetivo">
+          <Key>
+            <PropertyRef Name="IdObjetivo" />
+          </Key>
+          <Property Name="IdObjetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreObjetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionObjetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoObjetivo" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TActividads" Relationship="Self.fk_ActividadObjetivo" FromRole="TObjetivo" ToRole="TActividad" />
+          <NavigationProperty Name="TTipoObjetivo" Relationship="Self.fk_ObjetivoTipoObjetivo" FromRole="TObjetivo" ToRole="TTipoObjetivo" />
+        </EntityType>
+        <EntityType Name="TPlanOnBoarding">
+          <Key>
+            <PropertyRef Name="IdPlanOnBoarding" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="IdPuesto" Type="Int32" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="Realizado" Type="Boolean" />
+          <Property Name="PuntuacionTotal" Type="Int32" />
+          <Property Name="EscalaTC" Type="Int32" />
+          <Property Name="Puntuacion" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ResultadoFinal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EscalaWill" Type="Int32" />
+          <Property Name="EscalaSkill" Type="Int32" />
+          <Property Name="Cuadrante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroEvaluacion" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TColaborador" Relationship="Self.fk_planOnBoardingColaborador" FromRole="TPlanOnBoarding" ToRole="TColaborador" />
+          <NavigationProperty Name="TDetalleEvaluacions" Relationship="Self.fk_EvaluacionPlanOnBoarding" FromRole="TPlanOnBoarding" ToRole="TDetalleEvaluacion" />
+          <NavigationProperty Name="TPuesto" Relationship="Self.fk_planOnBoardingPuesto" FromRole="TPlanOnBoarding" ToRole="TPuesto" />
+        </EntityType>
+        <EntityType Name="TPuesto">
+          <Key>
+            <PropertyRef Name="IdPuesto" />
+          </Key>
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionPuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdArea" Type="Int32" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TArea" Relationship="Self.fk_PuestoArea" FromRole="TPuesto" ToRole="TArea" />
+          <NavigationProperty Name="TAsignacions" Relationship="Self.fk_rpePuesto" FromRole="TPuesto" ToRole="TAsignacion" />
+          <NavigationProperty Name="TColaboradors" Relationship="Self.fk_ColaboradorPuesto" FromRole="TPuesto" ToRole="TColaborador" />
+          <NavigationProperty Name="TPlanOnBoardings" Relationship="Self.fk_planOnBoardingPuesto" FromRole="TPuesto" ToRole="TPlanOnBoarding" />
+        </EntityType>
+        <EntityType Name="TRecurso">
+          <Key>
+            <PropertyRef Name="IdRecurso" />
+          </Key>
+          <Property Name="IdRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRecurso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionRecurso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TAsignacions" Relationship="Self.fk_rpeRecurso" FromRole="TRecurso" ToRole="TAsignacion" />
+        </EntityType>
+        <EntityType Name="TTipoObjetivo">
+          <Key>
+            <PropertyRef Name="IdTipoObjetivo" />
+          </Key>
+          <Property Name="IdTipoObjetivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DescripcionTipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UsuarioInserto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaInserto" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModifico" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaModifico" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="TObjetivoes" Relationship="Self.fk_ObjetivoTipoObjetivo" FromRole="TTipoObjetivo" ToRole="TObjetivo" />
+        </EntityType>
+        <EntityType Name="VCuadranteEmpleado">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="NombreColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DPIColaborador" Type="Int64" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" />
+          <Property Name="NombrePuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdArea" Type="Int32" Nullable="false" />
+          <Property Name="NombreArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="Realizado" Type="Boolean" />
+          <Property Name="NumeroEvaluacion" Type="Int32" />
+          <Property Name="PuntuacionTotalSkill" Type="Int32" />
+          <Property Name="EscalaTecnica" Type="Int32" />
+          <Property Name="PuntuacionTotalWill" Type="Int32" />
+          <Property Name="EscalaConductual" Type="Int32" />
+          <Property Name="ResultadoFinal" Type="Int32" />
+          <Property Name="Cuadrante" Type="Int32" />
+          <Property Name="Matriz" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VEscalasEmpleadoPlanOB">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="NombreColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DPIColaborador" Type="Int64" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" />
+          <Property Name="NombrePuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdArea" Type="Int32" Nullable="false" />
+          <Property Name="NombreArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="Realizado" Type="Boolean" />
+          <Property Name="NumeroEvaluacion" Type="Int32" />
+          <Property Name="PuntuacionTotalSkill" Type="Int32" />
+          <Property Name="EscalaTecnica" Type="Int32" />
+          <Property Name="PuntuacionTotalWill" Type="Int32" />
+          <Property Name="EscalaConductual" Type="Int32" />
+          <Property Name="ResultadoFinal" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VResultadoColaboradorSkill">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="Int32" />
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="NombreColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DPIColaborador" Type="Int64" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" />
+          <Property Name="NombrePuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdArea" Type="Int32" Nullable="false" />
+          <Property Name="NombreArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="Realizado" Type="Boolean" />
+          <Property Name="NumeroEvaluacion" Type="Int32" />
+          <Property Name="PuntuacionTotalSkill" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VResultadoColaboradorWill">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="IdPuesto" />
+            <PropertyRef Name="IdArea" />
+          </Key>
+          <Property Name="IdPlanOnBoarding" Type="Int32" />
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="NombreColaborador" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DPIColaborador" Type="Int64" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+          <Property Name="IdPuesto" Type="Int32" Nullable="false" />
+          <Property Name="NombrePuesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdArea" Type="Int32" Nullable="false" />
+          <Property Name="NombreArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaEvaluacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="Realizado" Type="Boolean" />
+          <Property Name="NumeroEvaluacion" Type="Int32" />
+          <Property Name="PuntuacionTotalWill" Type="Int32" />
+        </EntityType>
+        <Association Name="fk_ActividadObjetivo">
+          <End Role="TObjetivo" Type="Self.TObjetivo" Multiplicity="0..1" />
+          <End Role="TActividad" Type="Self.TActividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TObjetivo">
+              <PropertyRef Name="IdObjetivo" />
+            </Principal>
+            <Dependent Role="TActividad">
+              <PropertyRef Name="IdObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EvaluacionActividad">
+          <End Role="TActividad" Type="Self.TActividad" Multiplicity="0..1" />
+          <End Role="TDetalleEvaluacion" Type="Self.TDetalleEvaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TActividad">
+              <PropertyRef Name="IdActividad" />
+            </Principal>
+            <Dependent Role="TDetalleEvaluacion">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PuestoArea">
+          <End Role="TArea" Type="Self.TArea" Multiplicity="0..1" />
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TArea">
+              <PropertyRef Name="IdArea" />
+            </Principal>
+            <Dependent Role="TPuesto">
+              <PropertyRef Name="IdArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpeColaborador">
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpePuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_rpeRecurso">
+          <End Role="TRecurso" Type="Self.TRecurso" Multiplicity="0..1" />
+          <End Role="TAsignacion" Type="Self.TAsignacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRecurso">
+              <PropertyRef Name="IdRecurso" />
+            </Principal>
+            <Dependent Role="TAsignacion">
+              <PropertyRef Name="IdRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ColaboradorPuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TColaborador">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_planOnBoardingColaborador">
+          <End Role="TColaborador" Type="Self.TColaborador" Multiplicity="0..1" />
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="TPlanOnBoarding">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EvaluacionPlanOnBoarding">
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="0..1" />
+          <End Role="TDetalleEvaluacion" Type="Self.TDetalleEvaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPlanOnBoarding">
+              <PropertyRef Name="IdPlanOnBoarding" />
+            </Principal>
+            <Dependent Role="TDetalleEvaluacion">
+              <PropertyRef Name="IdPlanOnBoarding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ObjetivoTipoObjetivo">
+          <End Role="TTipoObjetivo" Type="Self.TTipoObjetivo" Multiplicity="0..1" />
+          <End Role="TObjetivo" Type="Self.TObjetivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TTipoObjetivo">
+              <PropertyRef Name="IdTipoObjetivo" />
+            </Principal>
+            <Dependent Role="TObjetivo">
+              <PropertyRef Name="IdTipoObjetivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_planOnBoardingPuesto">
+          <End Role="TPuesto" Type="Self.TPuesto" Multiplicity="0..1" />
+          <End Role="TPlanOnBoarding" Type="Self.TPlanOnBoarding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TPuesto">
+              <PropertyRef Name="IdPuesto" />
+            </Principal>
+            <Dependent Role="TPlanOnBoarding">
+              <PropertyRef Name="IdPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbOnboardingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TActividads" EntityType="Self.TActividad" />
+          <EntitySet Name="TAreas" EntityType="Self.TArea" />
+          <EntitySet Name="TAsignacions" EntityType="Self.TAsignacion" />
+          <EntitySet Name="TColaboradors" EntityType="Self.TColaborador" />
+          <EntitySet Name="TDetalleEvaluacions" EntityType="Self.TDetalleEvaluacion" />
+          <EntitySet Name="TObjetivoes" EntityType="Self.TObjetivo" />
+          <EntitySet Name="TPlanOnBoardings" EntityType="Self.TPlanOnBoarding" />
+          <EntitySet Name="TPuestoes" EntityType="Self.TPuesto" />
+          <EntitySet Name="TRecursoes" EntityType="Self.TRecurso" />
+          <EntitySet Name="TTipoObjetivoes" EntityType="Self.TTipoObjetivo" />
+          <EntitySet Name="VCuadranteEmpleadoes" EntityType="Self.VCuadranteEmpleado" />
+          <EntitySet Name="VEscalasEmpleadoPlanOBs" EntityType="Self.VEscalasEmpleadoPlanOB" />
+          <EntitySet Name="VResultadoColaboradorSkills" EntityType="Self.VResultadoColaboradorSkill" />
+          <EntitySet Name="VResultadoColaboradorWills" EntityType="Self.VResultadoColaboradorWill" />
+          <AssociationSet Name="fk_ActividadObjetivo" Association="Self.fk_ActividadObjetivo">
+            <End Role="TObjetivo" EntitySet="TObjetivoes" />
+            <End Role="TActividad" EntitySet="TActividads" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EvaluacionActividad" Association="Self.fk_EvaluacionActividad">
+            <End Role="TActividad" EntitySet="TActividads" />
+            <End Role="TDetalleEvaluacion" EntitySet="TDetalleEvaluacions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PuestoArea" Association="Self.fk_PuestoArea">
+            <End Role="TArea" EntitySet="TAreas" />
+            <End Role="TPuesto" EntitySet="TPuestoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpeColaborador" Association="Self.fk_rpeColaborador">
+            <End Role="TColaborador" EntitySet="TColaboradors" />
+            <End Role="TAsignacion" EntitySet="TAsignacions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpePuesto" Association="Self.fk_rpePuesto">
+            <End Role="TPuesto" EntitySet="TPuestoes" />
+            <End Role="TAsignacion" EntitySet="TAsignacions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_rpeRecurso" Association="Self.fk_rpeRecurso">
+            <End Role="TRecurso" EntitySet="TRecursoes" />
+            <End Role="TAsignacion" EntitySet="TAsignacions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ColaboradorPuesto" Association="Self.fk_ColaboradorPuesto">
+            <End Role="TPuesto" EntitySet="TPuestoes" />
+            <End Role="TColaborador" EntitySet="TColaboradors" />
+          </AssociationSet>
+          <AssociationSet Name="fk_planOnBoardingColaborador" Association="Self.fk_planOnBoardingColaborador">
+            <End Role="TColaborador" EntitySet="TColaboradors" />
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoardings" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EvaluacionPlanOnBoarding" Association="Self.fk_EvaluacionPlanOnBoarding">
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoardings" />
+            <End Role="TDetalleEvaluacion" EntitySet="TDetalleEvaluacions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ObjetivoTipoObjetivo" Association="Self.fk_ObjetivoTipoObjetivo">
+            <End Role="TTipoObjetivo" EntitySet="TTipoObjetivoes" />
+            <End Role="TObjetivo" EntitySet="TObjetivoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_planOnBoardingPuesto" Association="Self.fk_planOnBoardingPuesto">
+            <End Role="TPuesto" EntitySet="TPuestoes" />
+            <End Role="TPlanOnBoarding" EntitySet="TPlanOnBoardings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbOnboardingModelStoreContainer" CdmEntityContainer="dbOnboardingEntities">
+          <EntitySetMapping Name="TActividads">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TActividad">
+              <MappingFragment StoreEntitySet="TActividad">
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+                <ScalarProperty Name="NombreActividad" ColumnName="NombreActividad" />
+                <ScalarProperty Name="DescripcionActividad" ColumnName="DescripcionActividad" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="DiasEvaluar" ColumnName="DiasEvaluar" />
+                <ScalarProperty Name="IdObjetivo" ColumnName="IdObjetivo" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAreas">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TArea">
+              <MappingFragment StoreEntitySet="TArea">
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="DescripcionArea" ColumnName="DescripcionArea" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAsignacions">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TAsignacion">
+              <MappingFragment StoreEntitySet="TAsignacion">
+                <ScalarProperty Name="IdRecursoPuestoEmpleado" ColumnName="IdRecursoPuestoEmpleado" />
+                <ScalarProperty Name="TipoAsignacion" ColumnName="TipoAsignacion" />
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TColaboradors">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TColaborador">
+              <MappingFragment StoreEntitySet="TColaborador">
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="NombreColaborador" ColumnName="NombreColaborador" />
+                <ScalarProperty Name="ApellidoColaborador" ColumnName="ApellidoColaborador" />
+                <ScalarProperty Name="DPIColaborador" ColumnName="DPIColaborador" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TDetalleEvaluacions">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TDetalleEvaluacion">
+              <MappingFragment StoreEntitySet="TDetalleEvaluacion">
+                <ScalarProperty Name="IdDetalleEvaluacion" ColumnName="IdDetalleEvaluacion" />
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+                <ScalarProperty Name="IdPlanOnBoarding" ColumnName="IdPlanOnBoarding" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TObjetivoes">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TObjetivo">
+              <MappingFragment StoreEntitySet="TObjetivo">
+                <ScalarProperty Name="IdObjetivo" ColumnName="IdObjetivo" />
+                <ScalarProperty Name="NombreObjetivo" ColumnName="NombreObjetivo" />
+                <ScalarProperty Name="DescripcionObjetivo" ColumnName="DescripcionObjetivo" />
+                <ScalarProperty Name="IdTipoObjetivo" ColumnName="IdTipoObjetivo" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPlanOnBoardings">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TPlanOnBoarding">
+              <MappingFragment StoreEntitySet="TPlanOnBoarding">
+                <ScalarProperty Name="IdPlanOnBoarding" ColumnName="IdPlanOnBoarding" />
+                <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Realizado" ColumnName="Realizado" />
+                <ScalarProperty Name="PuntuacionTotal" ColumnName="PuntuacionTotal" />
+                <ScalarProperty Name="EscalaTC" ColumnName="EscalaTC" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="ResultadoFinal" ColumnName="ResultadoFinal" />
+                <ScalarProperty Name="EscalaWill" ColumnName="EscalaWill" />
+                <ScalarProperty Name="EscalaSkill" ColumnName="EscalaSkill" />
+                <ScalarProperty Name="Cuadrante" ColumnName="Cuadrante" />
+                <ScalarProperty Name="NumeroEvaluacion" ColumnName="NumeroEvaluacion" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPuestoes">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TPuesto">
+              <MappingFragment StoreEntitySet="TPuesto">
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+                <ScalarProperty Name="DescripcionPuesto" ColumnName="DescripcionPuesto" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRecursoes">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TRecurso">
+              <MappingFragment StoreEntitySet="TRecurso">
+                <ScalarProperty Name="IdRecurso" ColumnName="IdRecurso" />
+                <ScalarProperty Name="NombreRecurso" ColumnName="NombreRecurso" />
+                <ScalarProperty Name="DescripcionRecurso" ColumnName="DescripcionRecurso" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TTipoObjetivoes">
+            <EntityTypeMapping TypeName="dbOnboardingModel.TTipoObjetivo">
+              <MappingFragment StoreEntitySet="TTipoObjetivo">
+                <ScalarProperty Name="IdTipoObjetivo" ColumnName="IdTipoObjetivo" />
+                <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
+                <ScalarProperty Name="DescripcionTipo" ColumnName="DescripcionTipo" />
+                <ScalarProperty Name="UsuarioInserto" ColumnName="UsuarioInserto" />
+                <ScalarProperty Name="FechaInserto" ColumnName="FechaInserto" />
+                <ScalarProperty Name="UsuarioModifico" ColumnName="UsuarioModifico" />
+                <ScalarProperty Name="FechaModifico" ColumnName="FechaModifico" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCuadranteEmpleadoes">
+            <EntityTypeMapping TypeName="dbOnboardingModel.VCuadranteEmpleado">
+              <MappingFragment StoreEntitySet="VCuadranteEmpleado">
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="NombreColaborador" ColumnName="NombreColaborador" />
+                <ScalarProperty Name="DPIColaborador" ColumnName="DPIColaborador" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Realizado" ColumnName="Realizado" />
+                <ScalarProperty Name="NumeroEvaluacion" ColumnName="NumeroEvaluacion" />
+                <ScalarProperty Name="PuntuacionTotalSkill" ColumnName="PuntuacionTotalSkill" />
+                <ScalarProperty Name="EscalaTecnica" ColumnName="EscalaTecnica" />
+                <ScalarProperty Name="PuntuacionTotalWill" ColumnName="PuntuacionTotalWill" />
+                <ScalarProperty Name="EscalaConductual" ColumnName="EscalaConductual" />
+                <ScalarProperty Name="ResultadoFinal" ColumnName="ResultadoFinal" />
+                <ScalarProperty Name="Cuadrante" ColumnName="Cuadrante" />
+                <ScalarProperty Name="Matriz" ColumnName="Matriz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEscalasEmpleadoPlanOBs">
+            <EntityTypeMapping TypeName="dbOnboardingModel.VEscalasEmpleadoPlanOB">
+              <MappingFragment StoreEntitySet="VEscalasEmpleadoPlanOB">
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="NombreColaborador" ColumnName="NombreColaborador" />
+                <ScalarProperty Name="DPIColaborador" ColumnName="DPIColaborador" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Realizado" ColumnName="Realizado" />
+                <ScalarProperty Name="NumeroEvaluacion" ColumnName="NumeroEvaluacion" />
+                <ScalarProperty Name="PuntuacionTotalSkill" ColumnName="PuntuacionTotalSkill" />
+                <ScalarProperty Name="EscalaTecnica" ColumnName="EscalaTecnica" />
+                <ScalarProperty Name="PuntuacionTotalWill" ColumnName="PuntuacionTotalWill" />
+                <ScalarProperty Name="EscalaConductual" ColumnName="EscalaConductual" />
+                <ScalarProperty Name="ResultadoFinal" ColumnName="ResultadoFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VResultadoColaboradorSkills">
+            <EntityTypeMapping TypeName="dbOnboardingModel.VResultadoColaboradorSkill">
+              <MappingFragment StoreEntitySet="VResultadoColaboradorSkill">
+                <ScalarProperty Name="IdPlanOnBoarding" ColumnName="IdPlanOnBoarding" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="NombreColaborador" ColumnName="NombreColaborador" />
+                <ScalarProperty Name="DPIColaborador" ColumnName="DPIColaborador" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Realizado" ColumnName="Realizado" />
+                <ScalarProperty Name="NumeroEvaluacion" ColumnName="NumeroEvaluacion" />
+                <ScalarProperty Name="PuntuacionTotalSkill" ColumnName="PuntuacionTotalSkill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VResultadoColaboradorWills">
+            <EntityTypeMapping TypeName="dbOnboardingModel.VResultadoColaboradorWill">
+              <MappingFragment StoreEntitySet="VResultadoColaboradorWill">
+                <ScalarProperty Name="IdPlanOnBoarding" ColumnName="IdPlanOnBoarding" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="NombreColaborador" ColumnName="NombreColaborador" />
+                <ScalarProperty Name="DPIColaborador" ColumnName="DPIColaborador" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="IdPuesto" ColumnName="IdPuesto" />
+                <ScalarProperty Name="NombrePuesto" ColumnName="NombrePuesto" />
+                <ScalarProperty Name="IdArea" ColumnName="IdArea" />
+                <ScalarProperty Name="NombreArea" ColumnName="NombreArea" />
+                <ScalarProperty Name="FechaEvaluacion" ColumnName="FechaEvaluacion" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Realizado" ColumnName="Realizado" />
+                <ScalarProperty Name="NumeroEvaluacion" ColumnName="NumeroEvaluacion" />
+                <ScalarProperty Name="PuntuacionTotalWill" ColumnName="PuntuacionTotalWill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

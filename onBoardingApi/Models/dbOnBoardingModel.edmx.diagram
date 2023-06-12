@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34805517d14646a28e845a1298ea599b" Name="Diagram1">
+        <EntityTypeShape EntityType="dbOnboardingModel.TActividad" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TArea" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TAsignacion" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TColaborador" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TDetalleEvaluacion" Width="1.5" PointX="12.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TObjetivo" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TPlanOnBoarding" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TPuesto" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TRecurso" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.TTipoObjetivo" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.VCuadranteEmpleado" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.VEscalasEmpleadoPlanOB" Width="1.5" PointX="7.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.VResultadoColaboradorSkill" Width="1.5" PointX="12.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbOnboardingModel.VResultadoColaboradorWill" Width="1.5" PointX="9.75" PointY="14.25" IsExpanded="true" />
+        <AssociationConnector Association="dbOnboardingModel.fk_ActividadObjetivo" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_EvaluacionActividad" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_PuestoArea" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_rpeColaborador" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_rpePuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_rpeRecurso" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_ColaboradorPuesto" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_planOnBoardingColaborador" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_EvaluacionPlanOnBoarding" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_ObjetivoTipoObjetivo" ManuallyRouted="false" />
+        <AssociationConnector Association="dbOnboardingModel.fk_planOnBoardingPuesto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
